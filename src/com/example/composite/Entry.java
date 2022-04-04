@@ -1,5 +1,10 @@
 package com.example.composite;
 
+/**
+ * Composite 组合模式
+ * @author jay4195
+ * @since 2022-04-04
+ */
 public abstract class Entry {
 
     protected String name;
