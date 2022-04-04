@@ -33,12 +33,11 @@ public abstract class Entry {
     }
 
     protected String getFullPath() {
-        StringBuilder fullPath = new StringBuilder("/");
-        fullPath.append(name);
+        StringBuilder fullPath = new StringBuilder();
         Entry current = this;
-        while (current.getParent() != null) {
-            current = current.getParent();
+        while (current != null) {
             fullPath.insert(0, current.getName()).insert(0, "/");
+            current = current.getParent();
         }
         return fullPath.toString();
     }
