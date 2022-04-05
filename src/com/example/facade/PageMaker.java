@@ -21,7 +21,23 @@ public class PageMaker {
             writer.paragraph("等着你的邮件哦！ ");
             writer.mailto(mailaddr, username);
             writer.close();
-            System.out.printf("%s is created for %s (%s)\n", filename, mailaddr, username);
+            System.out.printf("%s is created for %s (%s).\n", filename, mailaddr, username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void makeLinkPage(String filename) {
+        try {
+            Properties mailProp = Database.getProperties("maildata");
+            HtmlWriter writer = new HtmlWriter(new FileWriter(filename, StandardCharsets.UTF_8));
+            writer.title("Link Page");
+            for (Object key : mailProp.keySet()) {
+                String keyStr = (String) key;
+                writer.mailto(keyStr, mailProp.getProperty(keyStr));
+            }
+            writer.close();
+            System.out.printf("%s is created.\n", filename);
         } catch (IOException e) {
             e.printStackTrace();
         }
