@@ -1,6 +1,4 @@
-package com.example.chainOfResponsibility.test;
-
-import com.example.chainOfResponsibility.*;
+package com.example.chainOfResponsibility;
 
 public class Main {
 
