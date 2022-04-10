@@ -13,8 +13,11 @@ public class DayState implements State {
 
     @Override
     public void doClock(Context context, int hour) {
-        if (hour < 9 || hour >= 17) {
+        HourManager.Period period = HourManager.getPeriod(hour);
+        if (HourManager.Period.NIGHT.equals(period)) {
             context.changeState(NightState.getInstance());
+        } else if (HourManager.Period.LUNCH.equals(period)) {
+            context.changeState(LunchState.getInstance());
         }
     }
 

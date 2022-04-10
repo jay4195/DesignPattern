@@ -1,10 +1,10 @@
 package com.example.state;
 
-public class NightState implements State {
+public class LunchState implements State {
 
-    private static NightState singleton = new NightState();
+    private static LunchState singleton = new LunchState();
 
-    private NightState() {
+    private LunchState() {
     }
 
     public static State getInstance() {
@@ -21,22 +21,22 @@ public class NightState implements State {
 
     @Override
     public void doUse(Context context) {
-        context.recordLog("紧急：使用金库（晚上）");
+        context.recordLog("紧急：使用金库（中午）");
     }
 
     @Override
     public void doAlarm(Context context) {
-        context.callSecurityCenter("按下警铃（晚上）");
+        context.callSecurityCenter("按下警铃（中午）");
     }
 
     @Override
     public void doPhone(Context context) {
-        context.callSecurityCenter("晚上的通话录音");
+        context.callSecurityCenter("中午的通话录音");
     }
 
     @Override
     public String toString() {
-        return "[晚上]";
+        return "[中午]";
     }
 
 }
