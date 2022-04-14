@@ -1,5 +1,9 @@
 package com.example.interpreter;
 
+import com.example.interpreter.lang.Context;
+import com.example.interpreter.lang.Node;
+import com.example.interpreter.lang.ProgramNode;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 

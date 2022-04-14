@@ -1,4 +1,4 @@
-package com.example.interpreter;
+package com.example.interpreter.lang;
 
 public class RepeatCommandNode extends Node {
 

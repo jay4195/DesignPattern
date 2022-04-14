@@ -1,4 +1,4 @@
-package com.example.interpreter;
+package com.example.interpreter.lang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,4 +27,5 @@ public class CommandListNode extends Node {
     public String toString() {
         return list.toString();
     }
+
 }

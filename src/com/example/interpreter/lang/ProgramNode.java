@@ -1,4 +1,4 @@
-package com.example.interpreter;
+package com.example.interpreter.lang;
 
 public class ProgramNode extends Node {
 
@@ -15,4 +15,10 @@ public class ProgramNode extends Node {
     public String toString() {
         return "[program " + commandListNode + "]";
     }
+
+    @Override
+    public Node getNode() {
+        return commandListNode;
+    }
+
 }
