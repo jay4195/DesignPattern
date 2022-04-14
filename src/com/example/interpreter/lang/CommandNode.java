@@ -16,6 +16,17 @@ public class CommandNode extends Node {
     }
 
     @Override
+    public void execute(Context context) {
+        if (context.currentToken().equals("repeat")) {
+            node = new RepeatCommandNode();
+            node.execute(context);
+        } else {
+            node = new PrimitiveCommandNode();
+            node.execute(context);
+        }
+    }
+
+    @Override
     public String toString() {
         return node.toString();
     }

@@ -14,6 +14,28 @@ public class PrimitiveCommandNode extends Node {
     }
 
     @Override
+    public void execute(Context context) {
+        name = context.currentToken();
+        context.skipToken(name);
+        switch (name) {
+            case "go":
+                // 向前一步
+                System.out.println("go");
+                break;
+            case "right":
+                // 右转
+                System.out.println("right");
+                break;
+            case "left":
+                // 左转
+                System.out.println("left");
+                break;
+            default:
+                throw new ParseException(name + " is undefined!");
+        }
+    }
+
+    @Override
     public String toString() {
         return name;
     }

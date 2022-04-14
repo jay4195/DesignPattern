@@ -46,7 +46,7 @@ public class MainFrame extends JFrame implements ActionListener {
             // TODO implement of startButton
             Node node = new ProgramNode();
             try {
-                node.parse(new Context(textField.getText()));
+                node.execute(new Context(textField.getText()));
             } catch (ParseException ex) {
                 ex.printStackTrace();
             }
