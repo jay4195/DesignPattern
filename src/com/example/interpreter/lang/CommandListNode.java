@@ -24,18 +24,9 @@ public class CommandListNode extends Node {
     }
 
     @Override
-    public void execute(Context context) {
-        while (true) {
-            if (context.currentToken() == null) {
-                throw new ParseException("Missing 'end'");
-            } else if (context.currentToken().equals("end")) {
-                context.skipToken("end");
-                break;
-            } else {
-                Node commandNode = new CommandNode();
-                commandNode.execute(context);
-                list.add(commandNode);
-            }
+    public void execute() {
+        for (Node n : list) {
+            n.execute();
         }
     }
 

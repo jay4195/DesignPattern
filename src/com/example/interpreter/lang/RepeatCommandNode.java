@@ -16,14 +16,9 @@ public class RepeatCommandNode extends Node {
     }
 
     @Override
-    public void execute(Context context) {
-        context.skipToken("repeat");
-        // TODO implement of RepeatCommandNode
-        number = context.currentNumber();
-        context.nextToken();
+    public void execute() {
         for (int i = 0; i < number; i++) {
-            commandListNode = new CommandListNode();
-            commandListNode.execute(context);
+            commandListNode.execute();
         }
     }
 

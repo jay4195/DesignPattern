@@ -5,6 +5,6 @@ package com.example.interpreter.lang;
  */
 public interface Executor {
 
-    void execute(Context context);
+    void execute();
 
 }

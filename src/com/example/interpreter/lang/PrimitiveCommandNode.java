@@ -14,9 +14,7 @@ public class PrimitiveCommandNode extends Node {
     }
 
     @Override
-    public void execute(Context context) {
-        name = context.currentToken();
-        context.skipToken(name);
+    public void execute() {
         switch (name) {
             case "go":
                 // 向前一步

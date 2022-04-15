@@ -2,20 +2,28 @@ package com.example.interpreter.gui;
 
 import com.example.interpreter.lang.Context;
 import com.example.interpreter.lang.Node;
-import com.example.interpreter.lang.ParseException;
 import com.example.interpreter.lang.ProgramNode;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
+/**
+ * Interpreter
+ * 解释器模式
+ */
 public class MainFrame extends JFrame implements ActionListener {
 
-    private DrawCanvas canvas = new DrawCanvas(600, 600);
+    // 绘制的历史命令
 
-    private JButton startButton = new JButton("start");
+    private DrawCanvas canvas = new DrawCanvas(700, 700);
 
     private TextField textField = new TextField();
+
+    private JButton startButton = new JButton("start");
 
     public MainFrame(String title) {
         super(title);
@@ -26,6 +34,7 @@ public class MainFrame extends JFrame implements ActionListener {
                 System.exit(0);
             }
         });
+
         startButton.addActionListener(this);
 
         Box buttonBox = new Box(BoxLayout.X_AXIS);
@@ -43,18 +52,15 @@ public class MainFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
-            // TODO implement of startButton
+            // press start button
+            textField.setText("program repeat 4 repeat 3 go right go left end right end end");
             Node node = new ProgramNode();
-            try {
-                node.execute(new Context(textField.getText()));
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
+            node.parse(new Context(textField.getText()));
+            node.execute();
         }
     }
 
     public static void main(String[] args) {
         new MainFrame("Interpreter Pattern Sample");
     }
-
 }

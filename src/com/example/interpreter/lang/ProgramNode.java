@@ -17,10 +17,8 @@ public class ProgramNode extends Node {
     }
 
     @Override
-    public void execute(Context context) {
-        context.skipToken("program");
-        commandListNode = new CommandListNode();
-        commandListNode.execute(context);
+    public void execute() {
+        commandListNode.execute();
     }
 
 }
