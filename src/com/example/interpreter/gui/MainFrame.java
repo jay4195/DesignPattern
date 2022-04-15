@@ -18,15 +18,18 @@ import java.awt.event.WindowEvent;
 public class MainFrame extends JFrame implements ActionListener {
 
     // 绘制的历史命令
-
-    private DrawCanvas canvas = new DrawCanvas(700, 700);
+    private DrawCanvas canvas;
 
     private TextField textField = new TextField();
 
     private JButton startButton = new JButton("start");
 
+    private JButton clearButton = new JButton("clear");
+
+
     public MainFrame(String title) {
         super(title);
+        canvas = DrawCanvas.getInstance();
 
         this.addWindowListener(new WindowAdapter() {
             @Override
@@ -36,10 +39,12 @@ public class MainFrame extends JFrame implements ActionListener {
         });
 
         startButton.addActionListener(this);
+        clearButton.addActionListener(this);
 
         Box buttonBox = new Box(BoxLayout.X_AXIS);
         buttonBox.add(textField);
         buttonBox.add(startButton);
+        buttonBox.add(clearButton);
         Box mainBox = new Box(BoxLayout.Y_AXIS);
         mainBox.add(buttonBox);
         mainBox.add(canvas);
@@ -53,10 +58,12 @@ public class MainFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == startButton) {
             // press start button
-            textField.setText("program repeat 4 repeat 3 go right go left end right end end");
+            canvas.init();
             Node node = new ProgramNode();
             node.parse(new Context(textField.getText()));
             node.execute();
+        } else if (e.getSource() == clearButton) {
+            canvas.repaint();
         }
     }
 

@@ -1,5 +1,7 @@
 package com.example.interpreter.lang;
 
+import com.example.interpreter.gui.DrawCanvas;
+
 public class PrimitiveCommandNode extends Node {
 
     private String name;
@@ -15,18 +17,15 @@ public class PrimitiveCommandNode extends Node {
 
     @Override
     public void execute() {
+        System.out.println(name);
         switch (name) {
             case "go":
                 // 向前一步
-                System.out.println("go");
+                DrawCanvas.getInstance().go();
                 break;
             case "right":
-                // 右转
-                System.out.println("right");
-                break;
             case "left":
-                // 左转
-                System.out.println("left");
+                DrawCanvas.getInstance().changeDirection(name);
                 break;
             default:
                 throw new ParseException(name + " is undefined!");
@@ -37,4 +36,5 @@ public class PrimitiveCommandNode extends Node {
     public String toString() {
         return name;
     }
+
 }
